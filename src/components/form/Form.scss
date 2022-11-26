@@ -1,0 +1,22 @@
+.form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__input {
+        width: 400px;
+        outline: none;
+        border: 1px solid #ffff;
+        border-radius: 6px;
+        padding: 8px;
+    }
+    &__submit {
+        padding: 10px 20px;
+        border: 1px solid #ffff;
+        border-radius: 6px;
+        transition: color, background-color 0.3s linear;
+        &:hover {
+            background-color: #ffff;
+            color: #181824;
+        }
+    }
+}

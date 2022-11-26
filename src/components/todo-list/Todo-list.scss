@@ -1,0 +1,42 @@
+.todo-list {
+    margin-top: 30px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid white;
+    &__item {
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #25273C;
+      border-bottom: 1px solid #37394e;
+      &--completed {
+        text-decoration: line-through;
+      }
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+    &__delete-btn {
+      background-color: red;
+      padding: 5px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: opacity 0.3s linear;
+      & img {
+        width: 20px;
+        height: 20px;
+      }
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+    &__text {
+      color: #ffff;
+      cursor: pointer;
+      &--completed {
+        color: #606381;
+        text-decoration: line-through;
+      }
+    }
+  }
