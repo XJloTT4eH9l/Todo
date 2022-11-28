@@ -1,7 +1,24 @@
 import './Footer.scss';
+import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { clearCompletedTodo, filterTodo } from '../../redux/todoSlice'
 
-function Footer(props) {
-    const {filter, filters, getActiveTodo, setFilter, clearCompletedTodo} = props;
+function Footer() {
+    const todos = useSelector((state) => state.todos);
+    const dispatch = useDispatch();
+    const [filter, setFilter] = useState('all');
+    const filters = ['all', 'active', 'done'];
+
+    const getActiveTodo = () => {
+      return todos.filter(todo => todo.completed === false).length;
+    }
+    const clearCompletedTodosHandler = () => {
+      dispatch(clearCompletedTodo());
+    }
+    const filterHandler = (item) => {
+      setFilter(item);
+      dispatch(filterTodo({filter}));
+    }
     return (
         <footer className="footer">
           <span className="footer__counter">{getActiveTodo()} items to do</span>
@@ -13,7 +30,7 @@ function Footer(props) {
                   <li
                     key={item} 
                     className={isActive ? "footer__item footer__item--active" : "footer__item"}
-                    onClick={() => setFilter(item)}
+                    onClick={() => filterHandler(item)}
                   >
                     {item}
                   </li>
@@ -21,7 +38,7 @@ function Footer(props) {
               })
             }
           </ul>
-          <span className="footer__clear" onClick={clearCompletedTodo}>Clear completed</span>
+          <span className="footer__clear" onClick={clearCompletedTodosHandler}>Clear completed</span>
         </footer>
     )
 }

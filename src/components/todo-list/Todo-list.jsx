@@ -15,6 +15,7 @@ function TodoList(props) {
                         key={todo.id}
                         id={todo.id}
                         text={todo.text}
+                        completed={todo.completed}
                     />
                 )
               })

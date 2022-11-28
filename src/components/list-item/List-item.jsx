@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { toggleTodoCompleted } from '../../redux/todoSlice';
+import { toggleTodoCompleted, deleteTodo } from '../../redux/todoSlice';
 
 function ListItem(props) {
     const {id, text, completed } = props;
@@ -7,7 +7,13 @@ function ListItem(props) {
     
     const handleTodoCompleted = () => {
         dispatch(
-            toggleTodoCompleted({id: id, completed: !completed})
+            toggleTodoCompleted({id})
+        )
+    }
+
+    const handleDeleteTodo = () => {
+        dispatch(
+            deleteTodo({id})
         )
     }
     
@@ -19,7 +25,7 @@ function ListItem(props) {
             >
                 {text}
             </span>
-            <button className="todo-list__delete-btn">
+            <button className="todo-list__delete-btn" onClick={handleDeleteTodo}>
                 <img src='img/del.svg' alt='delete'/>
             </button>
         </li>
