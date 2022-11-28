@@ -1,21 +1,20 @@
 import './Todo-list.scss';
 import ListItem from "../list-item/List-item";
+import { useSelector } from 'react-redux';
 
 function TodoList(props) {
-    const {todos, toggleTodoComplete, deleteTodo, filterTodo} = props;
+    const todos = useSelector((state) => state.todos);
+    
     return (
         <ul className="todo-list">
           {
             todos.length > 0 ? (
-              filterTodo(todos).map(todo => {
+              todos.map(todo => {
                 return (
                     <ListItem
                         key={todo.id}
                         id={todo.id}
                         text={todo.text}
-                        completed={todo.completed}
-                        toggleTodoComplete={toggleTodoComplete}
-                        deleteTodo={deleteTodo}
                     />
                 )
               })
