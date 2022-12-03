@@ -4,9 +4,8 @@ import TodoList from "./components/todo-list/Todo-list";
 import Footer from "./components/footer/Footer";
 
 function App() {
-  //const [todos, setTodos] = useState(JSON.parse(window.localStorage.getItem('todo-items')) || []);
   const [inputText, setInputText] = useState('');
- 
+  
   return (
     <div className="app">
       <div className="todo">

@@ -1,9 +1,11 @@
 import { useDispatch } from 'react-redux';
 import { toggleTodoCompleted, deleteTodo } from '../../redux/todoSlice';
+import { memo } from 'react';
 
 function ListItem(props) {
     const {id, text, completed } = props;
     const dispatch = useDispatch();
+    console.log('render');
     
     const handleTodoCompleted = () => {
         dispatch(
@@ -32,4 +34,4 @@ function ListItem(props) {
     )
 }
 
-export default ListItem;
+export default memo(ListItem);
